@@ -76,17 +76,19 @@ public:
 
   T& at(size_t index) {
     if (index > Capacity){
-      cout << "Trying to access " << index
-      << " element, but vector has " << Capacity << " elements" << endl;
-      throw std::out_of_range("");
+      throw std::out_of_range("Tried to access " + std::to_string(index)
+                              + "th element, but vector has capacity of "
+                              + std::to_string(Capacity)
+                              + " elements\n");
     }
     return Data[index];
   }
   T& at(size_t index) const {
     if (index > Capacity){
-      cout << "Trying to access " << index
-           << " element, but vector has " << Capacity << " elements" << endl;
-      throw std::out_of_range("");
+      throw std::out_of_range("Tried to access " + std::to_string(index)
+                                                  + "th element, but vector has capacity of"
+                                                  + std::to_string(Capacity)
+                                                  + " elements\n");
     }
     return Data[index];
   }
@@ -153,7 +155,7 @@ public:
     length++;
   }
 
-  void pop_back(){ length--; }
+  void pop_back(){ if (length > 0) length--; }
 
   void resize(size_t new_size){
     T* new_data = new T[new_size];

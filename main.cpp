@@ -40,6 +40,13 @@ int main(){
   ints_2.at(3) = 8;
   ints_2.back() = 9;
   ints_2.front() = 5;
+  try{
+    ints_2.at(100) = 2;
+  }
+  catch (std::out_of_range& e){
+    cout << e.what();
+    //Trying to access 100th element, but vector has capacity of 6 elements
+  }
 
   cout << ints_2; // 5, 13, 0, 8, 9
 
